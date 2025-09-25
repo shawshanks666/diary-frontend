@@ -1,38 +1,180 @@
+
 .App {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.indie-flower-regular {
+  font-family: "Indie Flower", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing:1.5px;
+}
+.custom-color-empty {
+  fill: #1e1e1e40; /* Custom light gray for no data */
+  color: #f0f0f0;
+}
+.heatmap-color-1 {
+  fill: rgba(19, 176, 108, 1.0); /* Vivid, fresh green with 50% transparency */
+}
+.heatmap-color-2 {
+  fill: rgba(41, 185, 125, 1.0); /* Slightly lighter, vibrant green */
+}
+.heatmap-color-3 {
+  fill: rgba(70, 193, 139, 1.0); /* Fresh green tone */
+}
+.heatmap-color-4 {
+  fill: rgba(99, 201, 154, 1.0); /* Softer green */
+}
+.heatmap-color-5 {
+  fill: rgba(128, 208, 167, 1.0); /* Lighter green */
+}
+.heatmap-color-6 {
+  fill: rgba(208, 163, 176, 1.0); /* Soft muted red */
+}
+.heatmap-color-7 {
+  fill: rgba(215, 158, 168, 1.0); /* Soft muted red */
+}
+.heatmap-color-8 {
+  fill: rgba(226, 159, 166, 1.0); /* Soft warm red */
+}
+.heatmap-color-9 {
+  fill: rgba(232, 156, 159, 1.0); /* Very soft red */
+}
+.heatmap-color-10 {
+  fill: rgba(242, 161, 149, 1.0); /* Softest red */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.react-calendar-heatmap .cell:hover::after {
+  background-color: rgba(255, 0, 0, 0.8);
+  color: white;
+  /* padding: 5px; */
+  border-radius: 5px;
+  position: absolute;
+  z-index: 10;
+
+  /* These seem unrelated to a tooltip; remove if unintended */
+
+}
+.react-calendar-heatmap{
+  min-width: 0;
+  min-height: 0;
+  height: 100%;
+  width: 100%;
+  grid-row: 1;
+  grid-column: 1/5;
+  /* margin: 1em; */
+  background-color: rgba(149, 195, 181, 0.04);
+  backdrop-filter: blur(8px);
+  resize: vertical;
+  border: none;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  z-index: 1;
+  font-family: "Indie Flower", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing:1.5px;
+}
+.flex-wrap{  grid-row: 2;
+  grid-column: 4/6;}
+
+/* Container styles */
+.calendar-container {
+
+  font-family: "Indie Flower", system-ui;  font-weight: 400;
+  font-style: normal;
+  letter-spacing:1.5px;
+  width: 30rem; /* Full width of the parent container */
+  max-width: 800px; /* Maximum width of the calendar container */
+  padding: 20px;
+  padding-top: 0;
+  height:min-content;
+  border-radius: 8px; /* Rounded corners for container */
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Calendar styles */
+.custom-calendar {
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Thin border around calendar */
+  background-color: #2c2c2c00;
+  border-radius: 8px; /* Rounded corners for calendar */
+  overflow: hidden; /* Hide overflow to keep rounded corners */
+  color: #fff; /* White text color */
+  height: fit-content; /* Set the height of the calendar */
+  width: 100%; /* Full width of the container */
+}
+
+/* Header and navigation styling */
+.react-calendar__navigation {
+  background-color: #2c2c2c00;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
+  height: 3rem;
+  color: #fff;
+  display:flex;
+  align-items: center;
+}
+.react-calendar__navigation button{
+  padding:10px;
+  z-index: 2;
+
+}
+
+/* Weekday styles */
+.react-calendar__month-view__weekdays {
+  background-color: #2c2c2c00;
+  color: #fff; /* White text color */
+}
+
+.react-calendar__month-view__weekdays__weekday {
+  display: none;
+  text-decoration: none; /* Remove underline from weekdays */
+  background-color: #2c2c2c00;
+  height: 35px; /* Fixed height for day cells */
+
+}
+
+.react-calendar__tile {
+  border: 1px dotted rgba(255, 255, 255, 0.1); /* Dotted grid lines for day cells */
+  background-color: #2c2c2c00;
+  transition: background-color 0.2s; /* Smooth transition for effects */
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  font-size: 1rem; /* Font size for day cells */
+  height: 4rem; /* Fixed height for day cells */
+  width: 4rem; /* Fixed width for day cells to ensure square boxes */
+  color: #fff; /* White text color */
+  text-decoration: none; /* Ensure no underline on text */
 }
 
-.App-link {
-  color: #61dafb;
+/* Day cell hover and focus effect */
+abbr:where([title]) {
+  text-decoration: none;
+  padding-left:11px;
+}
+abbr{
+  z-index: 2;
+  /* font-size: large; */
+  font-weight: 600;
+  color: #ffffff;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Day cell styles */
+
+
+/* Day cell hover and focus effect */
+.react-calendar__tile:hover,
+.react-calendar__tile:focus {
+  background-color: rgba(25, 95, 52, 0.126); 
 }
+
+.react-calendar__tile--active {
+  background-color: rgba(25, 95, 52, 0.126); 
+  color: #fff;
+}
+
+.react-calendar__tile--disabled {
+  background-color: rgba(68, 68, 68, 0.5); 
+  color: #888; 
+}
+
