@@ -5,13 +5,15 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import store from './store/store'; // Make sure the path is correct
-
+import '@mantine/core/styles.css';
+import { MantineProvider } from '@mantine/core';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Provider store={store}> {/* Ensure your store is passed here */}
-
-    <App />
+    <MantineProvider defaultColorScheme="dark">
+      <App />
+    </MantineProvider>
     </Provider>
   </React.StrictMode>
 );

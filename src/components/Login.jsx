@@ -1,15 +1,21 @@
 import React from 'react';
 import { useState } from 'react';
 import deriveKey from '../utility/deriveKey';
-import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { storeKey } from '../utility/keyStore';
+import { TextInput } from '@mantine/core';
+import classes from './FloatingLabelInput.module.css';
+
 const Login = () => {
 
   const navigate = useNavigate();
   const key = sessionStorage.getItem('aesKey');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [focused, setFocused] = useState(false);
+  const [value, setValue] = useState('');
+  const floating = value.trim().length !== 0 || focused || undefined;
+
   const handleSubmit = async (e) => {
     e.preventDefault(); // Prevents the default form submission behavior
 
@@ -56,71 +62,85 @@ const Login = () => {
   };
 
   return (
-    <div className='absolute top-0 flex flex-row z-10 h-full w-full items-center justify-center sm:justify-end pt-12 sm:px-12'>
-    <div className="flex h-fit flex-col align-centre justify-center px-6 py-12 lg:px-8 bg-grey/10 border-2 border-green-200/50 rounded-md backdrop-blur-md">
-      <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-        <h2 className="text-center text-2xl font-bold leading-9 tracking-tight text-green-300">
-          Log in to your account
-        </h2>
-      </div>
-      <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-        <form className="space-y-6" action="#"
-        onSubmit={handleSubmit} method="POST">
-          <div>
-            <label htmlFor="username" className="block text-sm font-medium leading-6 text-white">
-              username address
-            </label>
-            <div className="mt-2">
-              <input
-                id="username"
-                name="username"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                required
-                className="block w-full rounded-md border-0 p-1.5 text-black"
-              />
-        
-            </div>
-          </div>
+    // <div className="centering-flexbox">
 
-          <div>
-            <div className="flex items-center justify-between">
-              <label htmlFor="password" className="block text-sm font-medium leading-6 text-white">
-                Password
-              </label>
+    //   <div className="login-container">
+    //       <form className="login-form" action="#"
+    //       onSubmit={handleSubmit} method="POST">
+    //             <div className="login-title">
+    //         Log in to your account
+    //     </div>
+    //         <div>
+              
+    //           <label htmlFor="username" className="sr-only">
+    //             username address
+    //           </label>
+    //             <input
+    //               id="username"
+    //               name="username"
+    //               value={username}
+    //               onChange={(e) => setUsername(e.target.value)}
+    //               required
+    //               placeholder="Email"
+    //               className="login-input"
+    //             />
+    //         </div>
 
-            </div>
-            <div className="mt-2">
-              <input
-                id="password"
-                name="password"
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                autoComplete="current-password"
-                required
-                className="block w-full rounded-md border-0 p-1.5 text-black"
-              />
-            </div>
-          </div>
+    //         <div>
+    //             <label htmlFor="password" className="sr-only">
+    //               Password
+    //             </label>
 
-          <div>
-            <button
-              type="submit"
-              className="mt-10 flex w-full justify-center rounded-md bg-green-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-green-500"
-            >
-              Log in
-            </button>
-          </div>
-        </form>
+    //             <input
+    //               id="password"
+    //               name="password"
+    //               type="password"
+    //               value={password}
+    //               onChange={(e) => setPassword(e.target.value)}
+    //               autoComplete="current-password"
+    //               required
+    //               placeholder='Password'
+    //               className="login-input"
+    //             />
+    //         </div>
 
-        <p className="mt-2 text-center text-sm text-white-400">Dont have an account?
-        <a href="/signin" className="font-semibold leading-6 text-green-400 hover:text-green-200"> Create a new account! 
-          </a>
-        </p>
-      </div>
-    </div>
-    </div>
+    //         <div>
+    //           <button
+    //             type="submit"
+    //             className="login-button"
+    //           >
+    //             Log in
+    //           </button>
+    //         </div>
+    //         <p className="form-text">Dont have an account?
+    //       <a href="/signin" className="form-redirect"> Create a new account! 
+    //         </a>
+    //       </p>
+    //       </form>
+
+
+    
+    //   </div>
+    // </div>
+    <TextInput
+    label="Floating label"
+    placeholder="OMG, it also has a placeholder"
+    required
+    value={value}
+    onChange={(event) => setValue(event.currentTarget.value)}
+    onFocus={() => setFocused(true)}
+    onBlur={() => setFocused(false)}
+    mt="md"
+    autoComplete="off"
+    data-floating={floating}
+    labelProps={{ 'data-floating': floating }}
+    classNames={{
+      root: classes.root,
+      label: classes.label,
+      input: classes.input,
+      required: classes.required,
+    }}
+  />
   );
 };
 

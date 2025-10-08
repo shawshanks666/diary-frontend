@@ -11,7 +11,7 @@
 }
 .custom-color-empty {
   fill: #1e1e1e40; /* Custom light gray for no data */
-  color: #f0f0f0;
+  color: #ffffff;
 }
 .heatmap-color-1 {
   fill: rgba(19, 176, 108, 1.0); /* Vivid, fresh green with 50% transparency */

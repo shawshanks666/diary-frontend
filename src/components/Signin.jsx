@@ -45,21 +45,17 @@ const Signin = () => {
   };
 
   return (
-    <div className='absolute top-0 flex flex-row z-10 h-full w-full items-center justify-center sm:justify-end pt-12 sm:px-10'>
-    <div className="flex h-fit flex-col align-centre justify-center px-6 py-12 mx-3 lg:px-8 sm:w-96 bg-grey/10 border-2 border-green-200/50 rounded-md backdrop-blur-md	">
-      <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-        <h2 className="text-center text-2xl font-bold leading-9 tracking-tight text-green-300">
-          Create a new account
-        </h2>
-      </div>
-      <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-        <form className="space-y-6" action="#"
+    <div className='centering-flexbox'>
+    <div className="signin-container">
+        <form className="signin-form" action="#"
         onSubmit={handleSubmit} method="POST">
+          <div className='signin-title'>
+          Create a new account
+          </div>
           <div>
-            <label htmlFor="email" className="mix-blend-color-burn block text-sm font-medium leading-6 text-white">
+            <label htmlFor="email" className="sr-only">
               Email address
             </label>
-            <div className="mt-2">
               <input
                 id="email"
                 name="email"
@@ -68,16 +64,16 @@ const Signin = () => {
                 onChange={(e) => setEmail(e.target.value)}
                 autoComplete="email"
                 required
-                className="block w-full rounded-md border-0 p-1.5  text-gray-900 "
+                placeholder="Email"
+
+                className="signin-input"
               />
         
-            </div>
           </div>
           <div>
-              <label htmlFor="username" className="block text-sm font-medium leading-6 text-white">
+              <label htmlFor="username" className="sr-only">
                 Username
               </label>
-            <div className="mt-2">
               <input
                 id="username"
                 name="username"
@@ -86,18 +82,14 @@ const Signin = () => {
                 onChange={(e) => setUsername(e.target.value)}
                 autoComplete="current-username"
                 required
-                className="block w-full rounded-md border-0 p-1.5 text-black "
+                placeholder="Password"
+                className="signin-input"
               />
-            </div>
           </div>
           <div>
-            <div className="flex items-center justify-between">
-              <label htmlFor="password" className="block text-sm font-medium leading-6 text-white">
+              <label htmlFor="password" className="sr-only">
                 Password
               </label>
-
-            </div>
-            <div className="mt-2">
               <input
                 id="password"
                 name="password"
@@ -106,27 +98,26 @@ const Signin = () => {
                 onChange={(e) => setPassword(e.target.value)}
                 autoComplete="current-password"
                 required
-                className="block w-full rounded-md border-0 p-1.5 text-black "
+                placeholder="Re-enter Password"
+                className="signin-input"
               />
-            </div>
             </div>
 
 
           <div>
             <button
               type="submit"
-              className="flex w-full justify-center rounded-md bg-green-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600"
+              className="signin-button"
             >
               Create Account
             </button>
           </div>
         </form>
 
-        <p className="mt-2 text-center text-sm text-white-400">Already have an account?
-        <a href="/login" className="font-semibold leading-6 text-green-400 hover:text-green-200"> Log in! 
+        <p className="form-text">Already have an account?
+        <a href="/login" className="form-redirect"> Log in! 
           </a>
         </p>
-      </div>
     </div>
     </div>
   );

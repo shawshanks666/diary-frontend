@@ -1,0 +1,59 @@
+.root {
+  position: relative;
+}
+
+.label {
+  position: absolute;
+  opacity: 0;
+  z-index: 2;
+  top: 8px;
+  left: var(--mantine-spacing-sm);
+  pointer-events: none;
+  color: var(--mantine-color-dimmed);
+  transition:
+    transform 150ms ease,
+    font-size 150ms ease,
+    color 150ms ease;
+  
+}
+
+/* When label should float */
+.label[data-floating='true'] {
+  opacity: 1;
+  transform: translate(calc(var(--mantine-spacing-sm) * -1), -24px);
+  font-size: var(--mantine-font-size-xs);
+  font-weight: 500;
+  color: var(--mantine-color-text);
+
+}
+
+/* Required asterisk */
+.required {
+  transition: opacity 150ms ease;
+  opacity: 0;
+}
+
+.label[data-floating='true'] .required {
+  opacity: 1;
+  
+}
+
+/* Placeholder color transitions */
+.input::placeholder {
+  transition: color 150ms ease;
+  color: transparent;
+  
+}
+
+.input[data-floating='true']::placeholder {
+  color: var(--mantine-color-placeholder);
+}
+
+/* Optional: dark mode override */
+[data-mantine-color-scheme='dark'] .label {
+  color: var(--mantine-color-dimmed);
+}
+
+[data-mantine-color-scheme='dark'] .label[data-floating='true'] {
+  color: var(--mantine-color-text);
+}

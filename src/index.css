@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+img{
+  display: block;
+  max-width: 100%;
+}
 
 @font-face {
   font-family: 'mine';
@@ -11,12 +15,14 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
+  
 }
 #root{
   height:auto;
   min-height:100vh;
   width:100%;
   position:relative;
+
 }
 
 body {
@@ -30,8 +36,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #151f1b;
-  color: pink;
+  background-color: #17221f;
+  color: white;
 }
 
 code {
@@ -87,6 +93,99 @@ code {
   flex-wrap: wrap;
   padding-top: 50px;
 } */
+.centering-flexbox{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.login-container,.signin-container{
+  background-color: rgba(73, 73, 73, 0.548);
+  border: 2px;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;  margin: auto;
+  width: 400px;
+  height: 400px;
+  padding-inline: 24px;
+  padding-block: 32px;
+  line-height: 155%;
+  border-style: solid;
+  border-width: 2px;
+  box-sizing: border-box;
+  border-color: #000000;
+}
+.login-title,signin-container{
+  font-size: 16px;
+}
+/* .login-form-container{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+} */
+.login-form,.signin-form{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.login-input,.signin-input{
+  height: 42px;
+  width: 100%;
+  font-size: 14px;
+  padding-inline: 8px;
+  padding-top: 12px;
+  padding-bottom: 4px;
+  color: black;
+  border-width: 2px;
+  box-sizing: border-box;
+  border-color: #000000;
+
+}
+.login-button,.signin-button{
+  box-sizing: border-box;
+  width: 100%;
+  height: 42px;
+  background-color: green;
+  font-size: 16px;
+  padding-top: 12px;
+  padding-bottom: 4px;
+  text-align: center;
+  border-width: 2px;
+  box-sizing: border-box;
+  border-color: #000000;
+
+}
+
+.form-text{
+  font-size: 12px;
+  text-align: center;
+
+}
+.form-redirect{
+  color: rgb(147, 255, 147);
+}
+
+input::placeholder {
+  color: #9ca3af;      /* Tailwind gray-400 */
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* needs work */
+input:focus { 
+  outline:rgba(0, 0, 0, 0.15); 
+} 
+
+
+
+
+
+
+
+
 .dashboard{
   display: grid;
   gap: 1em;
