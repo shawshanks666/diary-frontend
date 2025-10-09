@@ -10,18 +10,22 @@ const Login = () => {
 
   const navigate = useNavigate();
   const key = sessionStorage.getItem('aesKey');
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [emailFocused, setEmailFocused] = useState(false);
   const [password, setPassword] = useState('');
-  const [focused, setFocused] = useState(false);
-  const [value, setValue] = useState('');
-  const floating = value.trim().length !== 0 || focused || undefined;
+  const [passwordFocused, setPasswordFocused] = useState(false);
+
+  const emailFloating = email.trim().length !== 0 || emailFocused || undefined;
+  const passwordFloating = password.trim().length !== 0 || passwordFocused || undefined;
+
+
 
   const handleSubmit = async (e) => {
     e.preventDefault(); // Prevents the default form submission behavior
 
     // Create the request payload
     const payload = {
-      username: username,
+      email: email,
       password: password
     };
 
@@ -33,7 +37,7 @@ const Login = () => {
         },
         body: JSON.stringify(payload),
       });
-
+      console.log(response);
       if (response.ok) {
         const data = await response.json();
         // Handle success (e.g., store a token, redirect user)
@@ -62,85 +66,139 @@ const Login = () => {
   };
 
   return (
-    // <div className="centering-flexbox">
+    <div className="centering-flexbox">
 
-    //   <div className="login-container">
-    //       <form className="login-form" action="#"
-    //       onSubmit={handleSubmit} method="POST">
-    //             <div className="login-title">
-    //         Log in to your account
-    //     </div>
-    //         <div>
+      <div className="login-container">
+          <form className="login-form" action="#"
+          onSubmit={handleSubmit} method="POST">
+                <div className="login-title">
+            Log in to your account
+        </div>
+            <div>
               
-    //           <label htmlFor="username" className="sr-only">
-    //             username address
-    //           </label>
-    //             <input
-    //               id="username"
-    //               name="username"
-    //               value={username}
-    //               onChange={(e) => setUsername(e.target.value)}
-    //               required
-    //               placeholder="Email"
-    //               className="login-input"
-    //             />
-    //         </div>
+              <label htmlFor="email" className="sr-only">
+                email address
+              </label>
+                {/* <input
+                  id="username"
+                  name="username"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  required
+                  placeholder="Email"
+                  className="login-input"
+                /> */}
+                <TextInput
+                  label="Email"
+                  placeholder="Email"
+                  required
+                  value={email}
+                  onChange={(event) => setEmail(event.currentTarget.value)}
+                  onFocus={() => setEmailFocused(true)}
+                  onBlur={() => setEmailFocused(false)}
+                  data-floating={emailFloating}
+                  labelProps={{ 'data-floating': emailFloating }}
+                  classNames={{
+                    root: classes.root,
+                    label: classes.label,
+                    wrapper:classes.wrapper,
+                    required: classes.required,
+                    
+                  }}
+                  styles={{
+                    input: {
+                      // backgroundColor: '#111',
+                      color: '#000000',
+                      borderColor: '#000000',
+                      borderRadius: '0',
+                      fontSize: '14px',
+                      width: '100%',
+                      height: '42px',
+                      paddingInline: '8px',
+                      paddingTop: '12px',
+                      paddingBottom: '4px',
+                      fontFamily: 'mine',
+                      borderWidth: '2px',
+                      boxSizing: 'border-box',
+                      '&::placeholder': { color: '#9ca3af' },
+                    },}}
+                />
+            </div>
 
-    //         <div>
-    //             <label htmlFor="password" className="sr-only">
-    //               Password
-    //             </label>
+            <div>
+                <label htmlFor="password" className="sr-only">
+                  Password
+                </label>
 
-    //             <input
-    //               id="password"
-    //               name="password"
-    //               type="password"
-    //               value={password}
-    //               onChange={(e) => setPassword(e.target.value)}
-    //               autoComplete="current-password"
-    //               required
-    //               placeholder='Password'
-    //               className="login-input"
-    //             />
-    //         </div>
+                {/* <input
+                  id="password"
+                  name="password"
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  autoComplete="current-password"
+                  required
+                  placeholder='Password'
+                  className="login-input"
+                /> */}
+                <TextInput
+                  label="Password"
+                  placeholder="Password"
+                  required
+                  value={password}
+                  onChange={(event) => setPassword(event.currentTarget.value)}
+                  onFocus={() => setPasswordFocused(true)}
+                  onBlur={() => setPasswordFocused(false)}
+                  data-floating={passwordFloating}
+                  labelProps={{ 'data-floating': passwordFloating }}
+                  classNames={{
+                    root: classes.root,
+                    label: classes.label,
+                    wrapper:classes.wrapper,
+                    required: classes.required,
+                    
+                  }}
+                  styles={{
+                    input: {
+                      // backgroundColor: '#111',
+                      color: '#000000',
+                      borderColor: '#000000',
+                      borderRadius: '0',
+                      fontSize: '14px',
+                      width: '100%',
+                      height: '42px',
+                      paddingInline: '8px',
+                      paddingTop: '12px',
+                      paddingBottom: '4px',
+                      fontFamily: 'mine',
+                      borderWidth: '2px',
+                      boxSizing: 'border-box',
 
-    //         <div>
-    //           <button
-    //             type="submit"
-    //             className="login-button"
-    //           >
-    //             Log in
-    //           </button>
-    //         </div>
-    //         <p className="form-text">Dont have an account?
-    //       <a href="/signin" className="form-redirect"> Create a new account! 
-    //         </a>
-    //       </p>
-    //       </form>
+          
+                      '&::placeholder': { color: '#9ca3af' },
+                    },}}
+                />
+            </div>
+
+            <div>
+              <button
+                type="submit"
+                className="login-button"
+              >
+                Log in
+              </button>
+            </div>
+            <p className="form-text">Dont have an account?
+          <a href="/signin" className="form-redirect"> Create a new account! 
+            </a>
+          </p>
+          </form>
 
 
     
-    //   </div>
-    // </div>
-    <TextInput
-    label="Floating label"
-    placeholder="OMG, it also has a placeholder"
-    required
-    value={value}
-    onChange={(event) => setValue(event.currentTarget.value)}
-    onFocus={() => setFocused(true)}
-    onBlur={() => setFocused(false)}
-    mt="md"
-    autoComplete="off"
-    data-floating={floating}
-    labelProps={{ 'data-floating': floating }}
-    classNames={{
-      root: classes.root,
-      label: classes.label,
-      input: classes.input,
-      required: classes.required,
-    }}
-  />
+      </div>
+    </div>
+
   );
 };
 

@@ -1,12 +1,19 @@
 .root {
   position: relative;
 }
+/* .wrapper {
+
+} */
+.input{
+  line-height: 155%;
+
+}
+
 
 .label {
   position: absolute;
   opacity: 0;
   z-index: 2;
-  top: 8px;
   left: var(--mantine-spacing-sm);
   pointer-events: none;
   color: var(--mantine-color-dimmed);
@@ -41,9 +48,9 @@
 /* Placeholder color transitions */
 .input::placeholder {
   transition: color 150ms ease;
-  color: transparent;
-  
-}
+  /* color: transparent; */
+  font-family: 'mine';
+  src:  url('../fonts/Minecraftia-Regular.ttf');}
 
 .input[data-floating='true']::placeholder {
   color: var(--mantine-color-placeholder);

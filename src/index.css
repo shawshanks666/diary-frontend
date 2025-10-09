@@ -22,6 +22,8 @@ html, body {
   min-height:100vh;
   width:100%;
   position:relative;
+  font-family: 'mine';
+
 
 }
 
@@ -31,9 +33,7 @@ body {
   padding: 0;
   box-sizing: border-box;
   overflow-x: hidden;
-  font-family: -apple-system, BlinkMacSystemFont, 'mine', 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #17221f;
@@ -131,6 +131,7 @@ code {
   flex-direction: column;
   justify-content: space-between;
 }
+
 .login-input,.signin-input{
   height: 42px;
   width: 100%;
