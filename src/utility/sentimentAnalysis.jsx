@@ -46,7 +46,7 @@ export default async function sentimentAnalysis(text) {
 	);
 	if (!response2.ok) throw new Error('Failed to fetch sentiment data');
 	const result2 = await response2.json();
-  
+	console.log(result2);
 	let weightedSum = 0;
 	let totalWeight = 0;
   
@@ -60,7 +60,7 @@ export default async function sentimentAnalysis(text) {
 	const shifted = (normalized + 1) / 2;
 	const sentimentScore = shifted * 9 + 1;
 	const intScore = Math.round(sentimentScore);
-  
+	console.log(sentimentScore);
 	return {
 	  mood,
 	  sentimentScore: intScore

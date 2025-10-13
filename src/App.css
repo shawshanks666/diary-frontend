@@ -1,3 +1,27 @@
+:root {
+  --jade-0: #E3F5EB;
+  --jade-1: #C1E7D3;
+  --jade-2: #9DD8BB;
+  --jade-3: #78C7A2;
+  --jade-4: #56B48D;
+  --jade-5: #3D9C7B;
+  --jade-6: #2F8268;
+  --jade-7: #246955;
+  --jade-8: #1A5044;
+  --jade-9: #0F3732;
+}
+:root {
+  --gray-0: #f8f9fa;
+  --gray-1: #f1f3f5;
+  --gray-2: #e9ecef;
+  --gray-3: #dee2e6;
+  --gray-4: #ced4da;
+  --gray-5: #adb5bd;
+  --gray-6: #868e96;
+  --gray-7: #495057;
+  --gray-8: #343a40;
+  --gray-9: #212529;
+}
 
 .App {
   text-align: center;

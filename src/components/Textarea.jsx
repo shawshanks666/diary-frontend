@@ -86,7 +86,7 @@ const MyEditor = ({diary,date, aesKey}) => {
       diaryEntry: ciphertext,
       iv:iv,
       mood:sentiment.mood,
-      rating: sentiment.sentiment,
+      rating: sentiment.sentimentScore,
       count: count
     };
 
@@ -123,10 +123,11 @@ const MyEditor = ({diary,date, aesKey}) => {
 
       <textarea
         ref={textareaRef}
-        className="min-h-96 p-6 relative w-full rounded-lg bg-[#95c3b50a] backdrop-blur text-white indie-flower-regular text-lg resize-y border-none focus:outline-none focus:ring-1 focus:ring-[#A8D5BA]"
+        className="min-h-96 p-6 relative w-full rounded-lg bg-[#95c3b50a] backdrop-blur text-green indie-flower-regular text-lg resize-y border-none focus:outline-none focus:ring-1 focus:ring-[#A8D5BA]"
         onInput={handleInput}
         placeholder="Type something..."
         value={text?text:null}
+        autocorrect="on" 
       />
 
       <button

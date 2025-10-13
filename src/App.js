@@ -17,26 +17,31 @@ function Log() {
 function Homepage() {
   return (
     <>
-  <Home></Home>
+      <NavBar></NavBar>
+      <Home></Home>
   </>
   )
 }
 function Sign() {
   return (
-    <Signin></Signin>
+    <>
+      <Signin></Signin>
+    </>
 
   )
 }
 
 function Dash() {
-  return <Dashboard></Dashboard>;
+  return (<>
+    <NavBar></NavBar>
+    <Dashboard></Dashboard>;
+  </>)
 }
 
 // Main App Component
 function App() {
   return (
     <Router>
-  <NavBar></NavBar>
       <Routes>
         <Route path="/login" element={<Log />} />
         <Route path="/signin" element={<Sign />} />

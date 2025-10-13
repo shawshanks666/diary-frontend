@@ -1,7 +1,7 @@
 import UserProfile from "./Streak";
 import { retrieveKey } from "../../utility/keyStore";
 import decryptData from "../../utility/decryptData";
-import Heatmap from "./Heatmap";
+import Heatmaps from "./Heatmap";
 import { useSelector, useDispatch } from 'react-redux';
 import { selectDiary, setDiary } from '../../store/diarySlice';
 import { selectKey, setKey } from "../../store/keySlice";
@@ -92,7 +92,7 @@ const Dashboard = () => {
  
     return (
       <div className="dashboard">
-      <Heatmap data={diary}></Heatmap>
+      <Heatmaps data={diary}></Heatmaps>
       <UserProfile></UserProfile>
       <WordCount date={date} diary={diary} ></WordCount>
       <Mood diary={diary}></Mood>

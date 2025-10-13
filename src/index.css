@@ -11,10 +11,15 @@ img{
   font-family: 'mine';
   src:  url('./fonts/Minecraftia-Regular.ttf');
 }
+@font-face {
+  font-family: 'mc';
+  src:  url('./fonts/Mojang-Regular.ttf');
+}
 html, body {
   height: 100%;
   margin: 0;
   padding: 0;
+  letter-spacing: 8%;
   
 }
 #root{
@@ -23,7 +28,7 @@ html, body {
   width:100%;
   position:relative;
   font-family: 'mine';
-
+  background-color: var(--jade-0);
 
 }
 
@@ -36,8 +41,8 @@ body {
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #17221f;
-  color: white;
+  background-color: #8ecebd;
+  color: var(--gray-0);
 }
 
 code {
@@ -79,13 +84,13 @@ code {
   left: 0;
   width: 1700px; /* Adjust size as needed */
   height: 1700px; /* Adjust size as needed */
-  background-image: url('./assets/halftone_1758699669.png');
+  background-image: url('./assets/halftone_1758699311.png');
   background-size:cover;
   transform-origin: center; /* Rotate around its center */
-  transform: translate(-50%, 50%) rotate(0deg);
+  transform: translate(-50, 50%) rotate(0deg);
   transform-origin: cover;
   animation: flower-spin infinite 1500s linear;
-  z-index: -20; /* Keep behind other content */
+  z-index: 0; /* Keep behind other content */
   /* filter: blur(15px); */
 }
 /* .dashboard{
@@ -98,24 +103,47 @@ code {
   width: 100%;
   height: 100%;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
+  margin-inline: 8px;
 }
+
+.diarie-title{
+  text-align:center;
+  font-size: 36px;
+  color: var(--jade-7);
+  letter-spacing: 8%;
+
+}
+
 .login-container,.signin-container{
-  background-color: rgba(73, 73, 73, 0.548);
+  min-width: 0;
+
+  background-color: none;
   border: 2px;
-  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;  margin: auto;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;  margin: max(auto,8px);
   width: 400px;
-  height: 400px;
+  height: 500px;
   padding-inline: 24px;
   padding-block: 32px;
   line-height: 155%;
   border-style: solid;
   border-width: 2px;
   box-sizing: border-box;
-  border-color: #000000;
+  border-color: var(--jade-3);
+  margin: 0;
 }
-.login-title,signin-container{
-  font-size: 16px;
+.login-container{
+  height: 400px;
+}
+.login-title,.signin-title{
+  font-size: 20px;
+  text-align: center;
+  color: var(--jade-6);
+}
+#heatmap-tooltip{
+  z-index: 100;
 }
 /* .login-form-container{
   width: 100%;
@@ -145,28 +173,43 @@ code {
   border-color: #000000;
 
 }
+
 .login-button,.signin-button{
   box-sizing: border-box;
   width: 100%;
   height: 42px;
-  background-color: green;
+  background-color: var(--jade-6);
   font-size: 16px;
   padding-top: 12px;
   padding-bottom: 4px;
   text-align: center;
   border-width: 2px;
   box-sizing: border-box;
-  border-color: #000000;
+  border-color: var(--jade-7);
+  color: var(--jade-0);
+  margin-bottom: 4px;
+}
+.login-button:hover:not(:focus-within),
+.signin-button:hover:not(:focus-within){
+  background-color: var(--jade-5);
 
 }
+.login-button:focus-within,
+.signin-button:focus-within{
+  background-color: var(--jade-7);
 
+}
 .form-text{
   font-size: 12px;
   text-align: center;
-
+  color: var(--gray-6);
+  
 }
 .form-redirect{
-  color: rgb(147, 255, 147);
+  color: var(--jade-6);
+}
+.form-redirect:hover{
+  color: var(--jade-4);
 }
 
 input::placeholder {
@@ -179,6 +222,10 @@ input::placeholder {
 input:focus { 
   outline:rgba(0, 0, 0, 0.15); 
 } 
+
+
+
+
 
 
 
@@ -271,7 +318,6 @@ input:focus {
   font-family: "Indie Flower", system-ui;
   font-weight: 400;
   font-style: normal;
-  letter-spacing:1.5px;
 }
 .core-emotion{
   background-size:contain;

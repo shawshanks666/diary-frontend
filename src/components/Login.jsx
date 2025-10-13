@@ -66,7 +66,12 @@ const Login = () => {
   };
 
   return (
+    <>    
+    <div className="container">
+    </div>  
+    <div className='flower w-full h-64 bg-no-repeat bg-contain bg-center -z-10'></div>
     <div className="centering-flexbox">
+      <div className='diarie-title'>Diarie</div>
 
       <div className="login-container">
           <form className="login-form" action="#"
@@ -91,7 +96,7 @@ const Login = () => {
                 <TextInput
                   label="Email"
                   placeholder="Email"
-                  required
+                  // required
                   value={email}
                   onChange={(event) => setEmail(event.currentTarget.value)}
                   onFocus={() => setEmailFocused(true)}
@@ -103,25 +108,26 @@ const Login = () => {
                     label: classes.label,
                     wrapper:classes.wrapper,
                     required: classes.required,
+                    input:classes.input,
                     
                   }}
-                  styles={{
-                    input: {
-                      // backgroundColor: '#111',
-                      color: '#000000',
-                      borderColor: '#000000',
-                      borderRadius: '0',
-                      fontSize: '14px',
-                      width: '100%',
-                      height: '42px',
-                      paddingInline: '8px',
-                      paddingTop: '12px',
-                      paddingBottom: '4px',
-                      fontFamily: 'mine',
-                      borderWidth: '2px',
-                      boxSizing: 'border-box',
-                      '&::placeholder': { color: '#9ca3af' },
-                    },}}
+                  // styles={{
+                  //   input: {
+                  //     // backgroundColor: '#111',
+                  //     color: '#000000',
+                  //     borderColor: '#000000',
+                  //     borderRadius: '0',
+                  //     fontSize: '14px',
+                  //     width: '100%',
+                  //     height: '42px',
+                  //     paddingInline: '8px',
+                  //     paddingTop: '12px',
+                  //     paddingBottom: '4px',
+                  //     fontFamily: 'mine',
+                  //     borderWidth: '2px',
+                  //     boxSizing: 'border-box',
+                  //     '&::placeholder': { color: '#9ca3af' },
+                  //   },}}
                 />
             </div>
 
@@ -144,7 +150,7 @@ const Login = () => {
                 <TextInput
                   label="Password"
                   placeholder="Password"
-                  required
+                  // required
                   value={password}
                   onChange={(event) => setPassword(event.currentTarget.value)}
                   onFocus={() => setPasswordFocused(true)}
@@ -156,27 +162,27 @@ const Login = () => {
                     label: classes.label,
                     wrapper:classes.wrapper,
                     required: classes.required,
-                    
+                    input:classes.input,
                   }}
-                  styles={{
-                    input: {
-                      // backgroundColor: '#111',
-                      color: '#000000',
-                      borderColor: '#000000',
-                      borderRadius: '0',
-                      fontSize: '14px',
-                      width: '100%',
-                      height: '42px',
-                      paddingInline: '8px',
-                      paddingTop: '12px',
-                      paddingBottom: '4px',
-                      fontFamily: 'mine',
-                      borderWidth: '2px',
-                      boxSizing: 'border-box',
+                  // styles={{
+                  //   input: {
+                  //     // backgroundColor: '#111',
+                  //     color: '#000000',
+                  //     borderColor: '#000000',
+                  //     borderRadius: '0',
+                  //     fontSize: '14px',
+                  //     width: '100%',
+                  //     height: '42px',
+                  //     paddingInline: '8px',
+                  //     paddingTop: '12px',
+                  //     paddingBottom: '4px',
+                  //     fontFamily: 'mine',
+                  //     borderWidth: '2px',
+                  //     boxSizing: 'border-box',
 
           
-                      '&::placeholder': { color: '#9ca3af' },
-                    },}}
+                  //     '&::placeholder': { color: '#9ca3af' },
+                  //   },}}
                 />
             </div>
 
@@ -188,16 +194,17 @@ const Login = () => {
                 Log in
               </button>
             </div>
-            <p className="form-text">Dont have an account?
-          <a href="/signin" className="form-redirect"> Create a new account! 
+
+          </form>
+          <p className="form-text">Dont have an account?
+          <a href="/signin" className="form-redirect"> Create a new one! 
             </a>
           </p>
-          </form>
-
 
     
       </div>
     </div>
+    </>
 
   );
 };

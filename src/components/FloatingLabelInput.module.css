@@ -1,12 +1,38 @@
 .root {
   position: relative;
+  letter-spacing:0.05em;
+
 }
 /* .wrapper {
 
 } */
 .input{
-  line-height: 155%;
+  /* line-height: 155%; */
+  color: var(--mantine-color-neutral-9)!important;
+  border-color: var(--mantine-color-gray-4)!important;
+  /* font-weight: 600; */
+  border-radius: 0!important;
+  font-size: 14px!important;
+  width: 100%!important;
+  height: 42px!important;
+  padding-inline: 8px!important;
+  padding-top: 12px!important;
+  padding-bottom: 4px!important;
+  font-family: mc!important;
+  border-width: 2px!important;
+  box-sizing: border-box!important;
+}
+/* .input:hover{
+  border-color: var(--mantine-color-jade-3)!important;
 
+} */
+.input:hover:not(:focus-within){
+  border-color: var(--mantine-color-jade-3)!important;
+
+}
+
+input:focus-within{
+  border-color: var(--mantine-color-jade-6)!important;
 }
 
 
@@ -14,9 +40,9 @@
   position: absolute;
   opacity: 0;
   z-index: 2;
+  width: inherit;
   left: var(--mantine-spacing-sm);
   pointer-events: none;
-  color: var(--mantine-color-dimmed);
   transition:
     transform 150ms ease,
     font-size 150ms ease,
@@ -27,10 +53,9 @@
 /* When label should float */
 .label[data-floating='true'] {
   opacity: 1;
-  transform: translate(calc(var(--mantine-spacing-sm) * -1), -24px);
-  font-size: var(--mantine-font-size-xs);
-  font-weight: 500;
-  color: var(--mantine-color-text);
+  transform: translate(calc(var(--mantine-spacing-sm) * -1), -16px);
+  font-size: 12px!important;
+  /* color: var(--mantine-color-jade-8); */
 
 }
 
@@ -53,14 +78,16 @@
   src:  url('../fonts/Minecraftia-Regular.ttf');}
 
 .input[data-floating='true']::placeholder {
-  color: var(--mantine-color-placeholder);
+  /* color: var(--mantine-color-gray-0); */
+  
 }
 
 /* Optional: dark mode override */
-[data-mantine-color-scheme='dark'] .label {
-  color: var(--mantine-color-dimmed);
+[data-mantine-color-scheme='light'] .label {
+  color: var(--mantine-color-jade-7);
+
 }
 
-[data-mantine-color-scheme='dark'] .label[data-floating='true'] {
-  color: var(--mantine-color-text);
+[data-mantine-color-scheme='light'] .label[data-floating='true'] {
+  color: gray.1!important;
 }

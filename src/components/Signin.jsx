@@ -55,7 +55,13 @@ const Signin = () => {
   };
 
   return (
+    <>    
+    <div className="container">
+    </div>  
+    <div className='flower w-full h-64 bg-no-repeat bg-contain bg-center -z-10'></div>
     <div className='centering-flexbox'>
+    <div className='diarie-title'>Diarie</div>
+
     <div className="signin-container">
         <form className="signin-form" action="#"
         onSubmit={handleSubmit} method="POST">
@@ -81,7 +87,7 @@ const Signin = () => {
               <TextInput
                   label="Email"
                   placeholder="Email"
-                  required
+                  // required
                   value={email}
                   onChange={(event) => setEmail(event.currentTarget.value)}
                   onFocus={() => setEmailFocused(true)}
@@ -93,25 +99,25 @@ const Signin = () => {
                     label: classes.label,
                     wrapper:classes.wrapper,
                     required: classes.required,
-                    
+                    input:classes.input,
                   }}
-                  styles={{
-                    input: {
-                      // backgroundColor: '#111',
-                      color: '#000000',
-                      borderColor: '#000000',
-                      borderRadius: '0',
-                      fontSize: '14px',
-                      width: '100%',
-                      height: '42px',
-                      paddingInline: '8px',
-                      paddingTop: '12px',
-                      paddingBottom: '4px',
-                      fontFamily: 'mine',
-                      borderWidth: '2px',
-                      boxSizing: 'border-box',
-                      '&::placeholder': { color: '#9ca3af' },
-                    },}}
+                  // styles={{
+                  //   input: {
+                  //     // backgroundColor: '#111',
+                  //     color: '#000000',
+                  //     borderColor: '#000000',
+                  //     borderRadius: '0',
+                  //     fontSize: '14px',
+                  //     width: '100%',
+                  //     height: '42px',
+                  //     paddingInline: '8px',
+                  //     paddingTop: '12px',
+                  //     paddingBottom: '4px',
+                  //     fontFamily: 'mine',
+                  //     borderWidth: '2px',
+                  //     boxSizing: 'border-box',
+                  //     '&::placeholder': { color: '#9ca3af' },
+                  //   },}}
                 />
         
           </div>
@@ -133,7 +139,7 @@ const Signin = () => {
               <TextInput
                   label="Username"
                   placeholder="Username"
-                  required
+                  // required
                   value={username}
                   onChange={(event) => setUsername(event.currentTarget.value)}
                   onFocus={() => setUsernameFocused(true)}
@@ -145,25 +151,25 @@ const Signin = () => {
                     label: classes.label,
                     wrapper:classes.wrapper,
                     required: classes.required,
-                    
+                    input:classes.input,
                   }}
-                  styles={{
-                    input: {
-                      // backgroundColor: '#111',
-                      color: '#000000',
-                      borderColor: '#000000',
-                      borderRadius: '0',
-                      fontSize: '14px',
-                      width: '100%',
-                      height: '42px',
-                      paddingInline: '8px',
-                      paddingTop: '12px',
-                      paddingBottom: '4px',
-                      fontFamily: 'mine',
-                      borderWidth: '2px',
-                      boxSizing: 'border-box',
-                      '&::placeholder': { color: '#9ca3af' },
-                    },}}
+                  // styles={{
+                  //   input: {
+                  //     // backgroundColor: '#111',
+                  //     color: '#000000',
+                  //     borderColor: '#000000',
+                  //     borderRadius: '0',
+                  //     fontSize: '14px',
+                  //     width: '100%',
+                  //     height: '42px',
+                  //     paddingInline: '8px',
+                  //     paddingTop: '12px',
+                  //     paddingBottom: '4px',
+                  //     fontFamily: 'mine',
+                  //     borderWidth: '2px',
+                  //     boxSizing: 'border-box',
+                  //     '&::placeholder': { color: '#9ca3af' },
+                  //   },}}
                 />
           </div>
           <div>
@@ -184,7 +190,7 @@ const Signin = () => {
                 <TextInput
                   label="Password"
                   placeholder="Password"
-                  required
+                  // required
                   value={password}
                   onChange={(event) => setPassword(event.currentTarget.value)}
                   onFocus={() => setPasswordFocused(true)}
@@ -196,25 +202,25 @@ const Signin = () => {
                     label: classes.label,
                     wrapper:classes.wrapper,
                     required: classes.required,
-                    
+                    input:classes.input,
                   }}
-                  styles={{
-                    input: {
-                      // backgroundColor: '#111',
-                      color: '#000000',
-                      borderColor: '#000000',
-                      borderRadius: '0',
-                      fontSize: '14px',
-                      width: '100%',
-                      height: '42px',
-                      paddingInline: '8px',
-                      paddingTop: '12px',
-                      paddingBottom: '4px',
-                      fontFamily: 'mine',
-                      borderWidth: '2px',
-                      boxSizing: 'border-box',
-                      '&::placeholder': { color: '#9ca3af' },
-                    },}}
+                  // styles={{
+                  //   input: {
+                  //     // backgroundColor: '#111',
+                  //     color: '#000000',
+                  //     borderColor: '#000000',
+                  //     borderRadius: '0',
+                  //     fontSize: '14px',
+                  //     width: '100%',
+                  //     height: '42px',
+                  //     paddingInline: '8px',
+                  //     paddingTop: '12px',
+                  //     paddingBottom: '4px',
+                  //     fontFamily: 'mine',
+                  //     borderWidth: '2px',
+                  //     boxSizing: 'border-box',
+                  //     '&::placeholder': { color: '#9ca3af' },
+                  //   },}}
                 />
             </div>
 
@@ -235,6 +241,7 @@ const Signin = () => {
         </p>
     </div>
     </div>
+    </>
   );
 };
 
