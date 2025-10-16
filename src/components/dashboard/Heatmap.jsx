@@ -67,10 +67,13 @@ const Heatmaps = ({data}) => {
 
 // </>
 //     )
-    return <Heatmap 
+    return (
+      <div className='heatmap'>
+            <Heatmap 
           styles={{
-        root: {
-          color:'red'
+        root: { 
+          zIndex:'10',
+          // backgroundColor:'var(--jade-1)'
         },
       }}
     data={formattedData} 
@@ -78,14 +81,18 @@ const Heatmaps = ({data}) => {
     endDate="2026-01-11"  
     domain={[1, 10]}  
     rectSize={20}
-    rectRadius={0}
-    gap={2}   
+    rectRadius={2}
+    gap={2.2}   
     withTooltip
-    withWeekdayLabels
     withMonthLabels
     getTooltipLabel={({ date, value }) =>
       `${dayjs(date).format('DD MMM, YYYY')} – ${value === null || value === 0 ? 'No contributions' : `${value} contribution${value > 1 ? 's' : ''}`}`
     }
+    getRectProps={({ value }) =>
+    value == null
+      ? { fill: 'var(--jade-1)', border: '1px' } // ✅ custom color only for empty cells
+      : {} // ✅ don't override color for non-empty cells
+  }
     colors={[
       'var(--mantine-color-jade-1)',
         'var(--mantine-color-jade-3)',
@@ -99,7 +106,11 @@ const Heatmaps = ({data}) => {
         'var(--mantine-color-neutral-1)',
 
       ]}
-    />;
+      
+          />
+      </div>
+    )
+
 
 }
 

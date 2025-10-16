@@ -50,8 +50,10 @@ const Mood = ({ diary }) => {
   
       <div className="core-emotions">
         {Object.entries(coreEmotionCounts).map(([emotion, count]) => (
+          <div className={'emotion-container'}>
           <div key={emotion} className={`core-emotion core-${emotion.toLowerCase()}`}>
-            {count} {emotion}
+          </div>
+          <div>{count}</div>
           </div>
         ))}
       </div>

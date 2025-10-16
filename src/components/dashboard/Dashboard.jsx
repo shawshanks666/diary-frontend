@@ -87,18 +87,32 @@ const Dashboard = () => {
 
   // Render the diary entries
   if (diaryLoading || keyLoading) {
-    return <h6>Loading... :3</h6>;
+    return <h2>Loading... :3</h2>;
   }
  
     return (
       <div className="dashboard">
-      <Heatmaps data={diary}></Heatmaps>
-      <UserProfile></UserProfile>
-      <WordCount date={date} diary={diary} ></WordCount>
-      <Mood diary={diary}></Mood>
-      <div className="flex flex-row flex-wrap items-top">
-      <BasicDateCalendar data={temp} date={date} setDate={setDate}></BasicDateCalendar>
-  </div>
+        <div className="dashboard-child-1">
+          <div className="dashboard-child-1-1">
+            <div className="greeting">Goodmorning_ <span>  User!</span>
+              </div>
+            <WordCount date={date} diary={diary} ></WordCount>
+          </div>  
+          <UserProfile></UserProfile>
+          <Mood diary={diary}></Mood>
+          {/* <div className="dashboard-fill"></div> */}
+        </div>
+        <div className="dashboard-child-2">
+          <div className="heatmap-header-container">
+          <div className="heatmap-header">No. of entries this year</div>
+          <span>3</span>
+          </div>
+
+          <Heatmaps data={diary}></Heatmaps>
+        </div>
+        {/* <div className="flex flex-row flex-wrap items-top">
+        <BasicDateCalendar data={temp} date={date} setDate={setDate}></BasicDateCalendar>
+        </div> */}
 
         
 

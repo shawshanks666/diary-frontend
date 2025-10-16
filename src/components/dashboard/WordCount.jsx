@@ -8,23 +8,37 @@ export default function WordCount({date,diary}) {
     if (!diary){
       return <></>
     }
-    
-    const recentMonthData = diary.filter(item => {
+    const recentYearData = diary.filter(item => {
+      const itemDate = new Date(item.date);
+      console.log(itemDate.getFullYear() === currentYear);
+      return itemDate.getFullYear() === currentYear;
+    });
+    console.log(recentYearData);
+    const recentMonthData = recentYearData.filter(item => {
       const itemDate = new Date(item.date);
       console.log(itemDate.getFullYear() === currentYear && itemDate.getMonth() === currentMonth);
       return itemDate.getFullYear() === currentYear && itemDate.getMonth() === currentMonth;
     });
     console.log(recentMonthData);
-    let sum =0
+    let monthSum =0
     recentMonthData.forEach((data) => {
-      sum+=data.count
+      monthSum+=data.count
       
     })
-    const avg= sum/recentMonthData.length
+    let yearSum =0
+    recentYearData.forEach((data) => {
+      yearSum+=data.count
+      
+    })
+    const avg= monthSum/recentMonthData.length
     return (
       <div className='word-count'>
-        <strong>Total Words:</strong> {sum}<br />
-        <strong>Average Words Per Entry:</strong> {avg.toFixed(2)}
+        <div className='word-count-title'>You journaled</div>
+        <div className='wordcount-data'><span>{monthSum}</span> words this month</div>
+        <div className='wordcount-data'><span>{yearSum}</span> words this year</div>
+
+
+        {/* <strong>Average Words Per Entry:</strong> {avg.toFixed(2)} */}
       </div>
     );
 }
