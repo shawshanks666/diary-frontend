@@ -6,7 +6,7 @@ import BasicDateCalendar from "./Calendar";
 import MyEditor from "./Textarea";
 import { retrieveKey } from "../utility/keyStore";
 import decryptData from "../utility/decryptData";
-
+import book from "../assets/opendiary.png"
 const Home = () => {
 
   const dispatch = useDispatch();
@@ -88,13 +88,18 @@ const Home = () => {
   });
   console.log(recentMonthData);
   return (
-    <div>    
-      <div className="flex flex-row flex-wrap items-top">
-        <MyEditor diary={temp} date={date} aesKey={key} />
-        <BasicDateCalendar data={temp} date={date} setDate={setDate} />
-      </div>
+      <div className="flex flex-row flex-wrap items-top diary-container">
+          <img src={book} class="book-image" />
 
-      {diary.map((entry) => (
+        <div className='calendar-container'>
+          <BasicDateCalendar data={temp} date={date} setDate={setDate} />
+        </div>
+        <div className='textarea-container'>
+          <MyEditor diary={temp} date={date} aesKey={key} />
+        </div>
+
+        
+      {/* {diary.map((entry) => (
         <div key={entry.id} className="whitespace-pre-line">
           <h2>{entry.date}</h2>
           <textarea
@@ -104,8 +109,9 @@ const Home = () => {
             value={entry.diaryEntry}
           />
         </div>
-      ))}
-    </div>
+      ))} */}
+      </div>
+
   );
 };
 

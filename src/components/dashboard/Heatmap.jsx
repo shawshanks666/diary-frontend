@@ -94,16 +94,16 @@ const Heatmaps = ({data}) => {
       : {} // ✅ don't override color for non-empty cells
   }
     colors={[
-      'var(--mantine-color-jade-1)',
-        'var(--mantine-color-jade-3)',
-        'var(--mantine-color-jade-5)',
-        'var(--mantine-color-jade-7)',
-        'var(--mantine-color-jade-9)',
-        'var(--mantine-color-neutral-9)',
-        'var(--mantine-color-neutral-7)',
-        'var(--mantine-color-neutral-5)',
-        'var(--mantine-color-neutral-3)',
-        'var(--mantine-color-neutral-1)',
+      'var(--mantine-color-heatmap-0)',
+        'var(--mantine-color-heatmap-1)',
+        'var(--mantine-color-heatmap-2)',
+        'var(--mantine-color-heatmap-3)',
+        'var(--mantine-color-heatmap-4)',
+        'var(--mantine-color-heatmap-5)',
+        'var(--mantine-color-heatmap-6)',
+        'var(--mantine-color-heatmap-7)',
+        'var(--mantine-color-heatmap-8)',
+        'var(--mantine-color-heatmap-9)',
 
       ]}
       

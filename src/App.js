@@ -4,9 +4,9 @@ import Login from './components/Login'
 import Signin from './components/Signin';
 import Dashboard from './components/dashboard/Dashboard';
 import Home from './components/Home';
+import Landing from './components/Landing'
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-
 // Components for different pages
 function Log() {
   return <>
@@ -14,7 +14,10 @@ function Log() {
 
   </>
 }
-function Homepage() {
+function LandingPage() {
+  return <Landing></Landing>
+}
+function Entry() {
   return (
     <>
       <NavBar></NavBar>
@@ -43,11 +46,12 @@ function App() {
   return (
     <Router>
       <Routes>
+        <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<Log />} />
         <Route path="/signin" element={<Sign />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/dashboard" element={<Dash />} />
         <Route path="/dash" element={<Dash />} /> 
-        <Route path="/home" element={<Homepage />} />
+        <Route path="/entry" element={<Entry />} />
       </Routes>
     </Router>
   );

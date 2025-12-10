@@ -1,40 +1,112 @@
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faUser, faCalendar } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch } from 'react-redux';
-import { toggle } from '../store/toggleSlice'; // Adjust the import path if necessary
+import { toggle } from '../store/toggleSlice';
+import burgerIcon from "../assets/burger.png";
 
 const Navbar = () => {
-  // const isToggled = useSelector((state) => state.toggle.isToggled);
   const dispatch = useDispatch();
+  const [menuOpen, setMenuOpen] = useState(false);
+  const menuRef = useRef(null);
+
   const handleToggle = () => {
-    dispatch(toggle()); // Dispatch the toggle action
+    dispatch(toggle());
   };
+
+  const handleLogout = () => {
+    sessionStorage.removeItem("authToken");
+    window.location.href = "/login"; // or your login route
+  };
+  
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    function handleClickOutside(e) {
+      if (menuRef.current && !menuRef.current.contains(e.target)) {
+        setMenuOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
   return (
     <>
-    <div className="sticky top-0 left-0 z-50 height-100 text-white px-4">
+      <div className="navbar relative">
+        
+        {/* Left side */}
+        <a className='nav-element' href='/home'>Diarie</a>
+        <a className='nav-element' href='/dashboard'>Dashboard</a>
+        <a className='nav-element' href='/entry'>Entry</a>
 
-    <div className="flex sticky justify-between items-center p-4 bg-transparent">
-      {/* Brand Name */}
-      <div className="indie-flower-regular text-3xl font-bold hover:text-green">
-        Diarie
+        {/* --- RIGHT SIDE ICONS + BURGER --- */}
+        <div className="flex items-center gap-4 relative">
+
+          {/* Calendar */}
+          {/* <FontAwesomeIcon
+            icon={faCalendar}
+            className="text-xl cursor-pointer hover:text-green px-1"
+            onClick={handleToggle}
+          /> */}
+
+          {/* Profile */}
+          {/* <FontAwesomeIcon
+            icon={faUser}
+            className="text-xl cursor-pointer hover:text-green px-1"
+          /> */}
+
+          {/* Burger */}
+          <div className="relative">
+            <img
+              src={burgerIcon}
+              className="text-xl cursor-pointer hover:text-green px-1"
+              onClick={() => setMenuOpen(!menuOpen)}
+            />
+
+            {/* DROPDOWN */}
+            {menuOpen && (
+              <div
+                ref={menuRef}
+                className="absolute right-0 mt-3 w-44 bg-[var(--jade-0)] border shadow-lg p-2 flex flex-col gap-1 z-100"
+              >
+                {/* MENU ITEMS — replace with PNG icons whenever you want */}
+
+                <button className="flex items-center gap-3 px-3 py-2 rounded hover:bg-gray-100">
+                  {/* <img src={ProfilePNG} className="w-5 h-5" /> */}
+                  <span>Profile</span>
+                </button>
+
+                <button className="flex items-center gap-3 px-3 py-2 rounded hover:bg-gray-100">
+                  {/* <img src={ThemesPNG} className="w-5 h-5" /> */}
+                  <span>Themes</span>
+                </button>
+
+                <button className="flex items-center gap-3 px-3 py-2 rounded hover:bg-gray-100">
+                  {/* <img src={SettingsPNG} className="w-5 h-5" /> */}
+                  <span>Settings</span>
+                </button>
+
+                <hr className="my-1" />
+
+                <button className="flex items-center gap-3 px-3 py-2 rounded hover:bg-red-50 text-red-500">
+                  {/* <img src={LogoutPNG} className="w-5 h-5" /> */}
+                  <span>Logout</span>
+                </button>
+                <button 
+                  onClick={handleLogout}
+                  className="px-4 py-2 text-left hover:bg-gray-200 w-full"
+                >
+                  Logout
+                </button>
+              </div>
+            )}
+          </div>
+
+        </div>
       </div>
 
-      {/* Icons */}
-      <div className="flex space-x-4">
-
-        <FontAwesomeIcon icon={faCalendar} className="text-xl cursor-pointer hover:text-green px-1" onClick={()=>handleToggle()}/>
-        <FontAwesomeIcon icon={faUser} className="text-xl cursor-pointer hover:text-green px-1" />
-        <FontAwesomeIcon icon={faBars} className="text-xl cursor-pointer hover:text-green px-1" />
-      </div>
-    </div>
-    </div>
-
-    <div className="container">
-  </div>  
-  <div className='flower w-full h-64 bg-no-repeat bg-contain bg-center -z-10'></div>
-
-
+      <div className="container"></div>
+      <div className='flower w-full h-64 bg-no-repeat bg-contain bg-center -z-10'></div>
     </>
   );
 };

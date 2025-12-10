@@ -32,9 +32,22 @@ const neutral = [
   '#343a40', // gray-8
   '#212529', // gray-9
 ];
+const heatmap = [
+  "#F28A8A", // stronger pastel red
+  "#F5A3A3",
+  "#F7BBBB",
+  "#F9D3D3",
+  "#FBEAEA", // midpoint (soft blush)
+  "#DDF3E7",
+  "#BEE8D3",
+  "#9EDDBF",
+  "#7DD2AB",
+  "#5CC896"  // stronger pastel green
+];
+
 
 const theme = createTheme({
-  colors: { jade,neutral },
+  colors: { jade,neutral,heatmap },
   primaryColor: 'jade',
 });
 

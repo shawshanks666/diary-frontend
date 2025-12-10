@@ -15,10 +15,12 @@ export default async function sentimentAnalysis(text) {
 	  negative: -1
 	};
   
-	const sanitizedText = text.replace(/\n/g, '\\n');
+	const sanitizedText = text.replace(/\n/g, "\\n");
 	const apiKey = process.env.REACT_APP_API_KEY;
+  
+	// ------------------- EMOTION (fixed endpoint) -------------------
 	const response1 = await fetch(
-	  "https://api-inference.huggingface.co/models/SamLowe/roberta-base-go_emotions",
+	  "https://router.huggingface.co/hf-inference/models/SamLowe/roberta-base-go_emotions",
 	  {
 		headers: {
 		  Authorization: `Bearer ${apiKey}`,
@@ -28,13 +30,15 @@ export default async function sentimentAnalysis(text) {
 		body: JSON.stringify({ inputs: sanitizedText }),
 	  }
 	);
-	if (!response1.ok) throw new Error('Failed to fetch mood data');
+  
+	if (!response1.ok) throw new Error("Failed to fetch mood data");
+  
 	const result1 = await response1.json();
 	const mood = emotionToNumber[result1[0][0].label];
   
-	// ----- Sentiment analysis -----
+	// ------------------- SENTIMENT (fixed endpoint) -------------------
 	const response2 = await fetch(
-	  "https://api-inference.huggingface.co/models/cardiffnlp/twitter-roberta-base-sentiment-latest",
+	  "https://router.huggingface.co/hf-inference/models/cardiffnlp/twitter-roberta-base-sentiment-latest",
 	  {
 		headers: {
 		  Authorization: `Bearer ${apiKey}`,
@@ -44,9 +48,12 @@ export default async function sentimentAnalysis(text) {
 		body: JSON.stringify({ inputs: sanitizedText }),
 	  }
 	);
-	if (!response2.ok) throw new Error('Failed to fetch sentiment data');
+  
+	if (!response2.ok) throw new Error("Failed to fetch sentiment data");
+  
 	const result2 = await response2.json();
 	console.log(result2);
+  
 	let weightedSum = 0;
 	let totalWeight = 0;
   
@@ -60,10 +67,12 @@ export default async function sentimentAnalysis(text) {
 	const shifted = (normalized + 1) / 2;
 	const sentimentScore = shifted * 9 + 1;
 	const intScore = Math.round(sentimentScore);
+  
 	console.log(sentimentScore);
+  
 	return {
 	  mood,
-	  sentimentScore: intScore
+	  sentimentScore: intScore,
 	};
   }
   

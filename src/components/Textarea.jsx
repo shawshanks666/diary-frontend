@@ -13,6 +13,8 @@ const MyEditor = ({diary,date, aesKey}) => {
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const [key, setKey] = useState(null);
+  const [isEditing,setIsEditing] = useState(false);
+  const [editingId, setEditingId] = useState(null);
   const token = sessionStorage.getItem('authToken');
   const currentDate = date;
   const formattedDate = currentDate.toLocaleDateString('en-CA');
@@ -37,6 +39,9 @@ const MyEditor = ({diary,date, aesKey}) => {
     // Finding the diary entry based on the date
     const entry = diary.find((e) => e.date === formattedDate);
     if (entry && entry.diaryEntry && key) {
+    console.log(entry.id);
+    setIsEditing(true)
+    setEditingId(entry.id)
     async function setdiaryEntry() {
 
       try{
@@ -55,18 +60,18 @@ const MyEditor = ({diary,date, aesKey}) => {
     setdiaryEntry();
   }
    else {
-    setText("Type Something...");
+    setText("");
   }
-  }, [date])
+  }, [formattedDate, diary, key])
   const handleToggle = () => {
     setIsFullScreen(!isFullScreen);
   };
 
   const handleInput = (e) => {
     setText(e.target.value);
-    const textarea = textareaRef.current;
-    textarea.style.height = "auto";
-    textarea.style.height = textarea.scrollHeight + "px";
+    // const textarea = textareaRef.current;
+    // textarea.style.height = "auto";
+    // textarea.style.height = textarea.scrollHeight + "px";
   };
   const WordCount = (str) => {
     return str.trim().split(/\s+/).length;
@@ -92,54 +97,84 @@ const MyEditor = ({diary,date, aesKey}) => {
 
     setLoading(true);
     setMessage('');
-
-    try {
-      const response = await fetch('http://localhost:3000/diary', {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(payload),
-      });
-
-      if (response.ok) {
-        setMessage('Diary entry posted successfully!');
-      } else {
-        setMessage('Failed to post diary entry');
+    if (isEditing){
+      try {
+        const response = await fetch(`http://localhost:3000/diary/${editingId}`, {
+          method: 'PATCH',
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(payload),
+        });
+  
+        if (response.ok) {
+          setMessage('Diary entry updated successfully!');
+        } else {
+          setMessage('Failed to post diary entry');
+        }
+      } catch (error) {
+        setMessage('Error posting diary');
+      } finally {
+        setLoading(false);
       }
-    } catch (error) {
-      setMessage('Error posting diary');
-    } finally {
-      setLoading(false);
     }
+    else{
+      try {
+        const response = await fetch('http://localhost:3000/diary', {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(payload),
+        });
+  
+        if (response.ok) {
+          setMessage('Diary entry posted successfully!');
+        } else {
+          setMessage('Failed to post diary entry');
+        }
+      } catch (error) {
+        setMessage('Error posting diary');
+      } finally {
+        setLoading(false);
+      }
+    }
+
   };
 
   return (
-    <div className={`relative flex flex-col min-h-96 w-full lg:w-3/5 rounded-lg backdrop-blur text-white indie-flower-regular text-lg resize-y border-none ${isFullScreen ? "fixed top-0 left-0 lg:w-[calc(100%-20px)] " : ""}`}>
-      <button onClick={handleToggle} className="absolute text-white right-2 top-2 z-10">
+    <>
+      {/* <button onClick={handleToggle} className="absolute text-white right-2 top-2 z-10">
         <FontAwesomeIcon icon={faExpand} className="text-xl cursor-pointer hover:text-green px-1" />
-      </button>
+      </button> */}
 
       <textarea
+        name="diary"
         ref={textareaRef}
-        className="min-h-96 p-6 relative w-full rounded-lg bg-[#95c3b50a] backdrop-blur text-green indie-flower-regular text-lg resize-y border-none focus:outline-none focus:ring-1 focus:ring-[#A8D5BA]"
+        className="textarea"
         onInput={handleInput}
         placeholder="Type something..."
         value={text?text:null}
         autocorrect="on" 
       />
+      <div className="button-container">
+        <p>Wordcount: 
+        <span>{text? WordCount(text):0}</span>
+        </p>
+        <button
+          onClick={handleSubmit}
+          disabled={loading}
+          className="login-button"
+        >
+          {loading ? 'Saving...' : 'Save'}
+        </button>
+      </div>
 
-      <button
-        onClick={handleSubmit}
-        disabled={loading}
-        className="mt-2 bottom-0 right-0 p-2 text-white flex justify-center rounded-md bg-green-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-green-500"
-      >
-        {loading ? 'Submitting...' : 'Submit'}
-      </button>
 
-      {message && <p className="mt-4 text-center">{message}</p>}
-    </div>
+      {/* {message && <p className="mt-4 text-center">{message}</p>} */}
+    </>
   );
 }
 

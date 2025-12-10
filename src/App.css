@@ -8,7 +8,7 @@
   --jade-6: #2F8268;
   --jade-7: #246955;
   --jade-8: #1A5044;
-  --jade-9: #0F3732;
+  --jade-9: #0f3732;
 }
 :root {
   --gray-0: #f8f9fa;
@@ -104,26 +104,24 @@
   grid-column: 4/6;}
 
 /* Container styles */
-.calendar-container {
+.calendar-wrapper {
 
-  font-family: "Indie Flower", system-ui;  font-weight: 400;
-  font-style: normal;
+  /* font-family: "Indie Flower", system-ui;  font-weight: 400; */
   letter-spacing:1.5px;
-  width: 30rem; /* Full width of the parent container */
+  width: 90%; /* Full width of the parent container */
   max-width: 800px; /* Maximum width of the calendar container */
-  padding: 20px;
+  padding: 0px;
   padding-top: 0;
   height:min-content;
-  border-radius: 8px; /* Rounded corners for container */
 }
 
 /* Calendar styles */
 .custom-calendar {
   border: 1px solid rgba(255, 255, 255, 0.1); /* Thin border around calendar */
   background-color: #2c2c2c00;
-  border-radius: 8px; /* Rounded corners for calendar */
+  font-size: 14px;
   overflow: hidden; /* Hide overflow to keep rounded corners */
-  color: #fff; /* White text color */
+  color: white; /* White text color */
   height: fit-content; /* Set the height of the calendar */
   width: 100%; /* Full width of the container */
 }
@@ -133,7 +131,7 @@
   background-color: #2c2c2c00;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
   height: 3rem;
-  color: #fff;
+  color: var(--jade-9);
   display:flex;
   align-items: center;
 }
@@ -147,6 +145,7 @@
 .react-calendar__month-view__weekdays {
   background-color: #2c2c2c00;
   color: #fff; /* White text color */
+  
 }
 
 .react-calendar__month-view__weekdays__weekday {
@@ -157,16 +156,17 @@
 
 }
 
+
 .react-calendar__tile {
-  border: 1px dotted rgba(255, 255, 255, 0.1); /* Dotted grid lines for day cells */
+  border: 3px dotted rgb(194, 236, 206, 0.1); /* Dotted grid lines for day cells */
   background-color: #2c2c2c00;
   transition: background-color 0.2s; /* Smooth transition for effects */
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1rem; /* Font size for day cells */
-  height: 4rem; /* Fixed height for day cells */
-  width: 4rem; /* Fixed width for day cells to ensure square boxes */
+  font-size: 14px; /* Font size for day cells */
+  height: 3rem; /* Fixed height for day cells */
+  width:3rem; /* Fixed width for day cells to ensure square boxes */
   color: #fff; /* White text color */
   text-decoration: none; /* Ensure no underline on text */
 }
@@ -178,9 +178,10 @@ abbr:where([title]) {
 }
 abbr{
   z-index: 2;
+  font-family: 'source-code-pro';
   /* font-size: large; */
   font-weight: 600;
-  color: #ffffff;
+  color: var(--jade-9);
 }
 
 /* Day cell styles */

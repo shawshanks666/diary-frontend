@@ -21,7 +21,7 @@ const UserProfile = () => {
             <div className="relative streak w-10">
             
 
-            <p className="absolute top-7 text-center  text-3xl w-28 h-28">{user?user[0].streak:''}</p>
+            <p>{user?user[0].streak:''}</p>
             </div>
 
     );
