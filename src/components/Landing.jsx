@@ -40,16 +40,16 @@ const Landing = () => {
                     </div>
 
                     <div className='feature'>
-                        <div className='feature-title'>Daily Streak Tracking</div>
-                        <div className='feature-body'>Stay motivated with streaks that help build a journaling habit.</div>
+                        <div className='feature-title'>End-to-End Encryption</div>
+                        <div className='feature-body'>Data is encrypted, making your thoughts private even from us.</div>
                     </div>
                     <div className='feature'>
-                        <div className='feature-title'>Daily Streak Tracking</div>
-                        <div className='feature-body'>Stay motivated with streaks that help build a journaling habit.</div>
+                        <div className='feature-title'>AI Mood Detection</div>
+                        <div className='feature-body'>Diarie  generates insights about how you're feeling over time.</div>
                     </div>
                     <div className='feature'>
-                        <div className='feature-title'>Daily Streak Tracking</div>
-                        <div className='feature-body'>Stay motivated with streaks that help build a journaling habit.</div>
+                        <div className='feature-title'> Daily Streak Tracking</div>
+                        <div className='feature-body'>View your writing statistics through clean charts and visual analytics.</div>
                     </div>
 
                 </div>

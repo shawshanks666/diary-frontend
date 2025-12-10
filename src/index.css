@@ -180,7 +180,7 @@ code {
   flex-direction: column;
   position: absolute;
   top: 0;
-  opacity: 40%;
+  opacity: 60%;
   left: 0;
 }
 .hero-subtitle{
@@ -252,7 +252,7 @@ code {
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  min-height: 150px;
+  min-height: 200px;
   height: fit-content;
   padding: 14px;
 }
@@ -260,11 +260,15 @@ code {
   font-family: 'mc-bold';
   font-size: 16px;
   color: var(--jade-0);
+  width: 100%;
+  text-align: center;
 }
 .feature-body{
   font-size: 14px;
   color: var(--jade-1);
   line-height: 200%;
+  width: 100%;
+  text-align: center;
 }
 
 .landing-child-3{
