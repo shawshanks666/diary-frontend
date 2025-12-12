@@ -1,6 +1,4 @@
 import { useState, useRef, useEffect } from "react";
-import { faExpand } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import encryptData from '../utility/encryptData';
 import decryptData from '../utility/decryptData';
 import sentimentAnalysis from '../utility/sentimentAnalysis';
@@ -8,7 +6,7 @@ const MyEditor = ({diary,date, aesKey}) => {
 
   //console.log(key instanceof CryptoKey);  // Should log true if it's a valid CryptoKey
   const textareaRef = useRef(null);
-  const [isFullScreen, setIsFullScreen] = useState(false);
+  // const [isFullScreen, setIsFullScreen] = useState(false);
   const [text, setText] = useState("");
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
@@ -62,10 +60,10 @@ const MyEditor = ({diary,date, aesKey}) => {
    else {
     setText("");
   }
-  }, [formattedDate, diary, key])
-  const handleToggle = () => {
-    setIsFullScreen(!isFullScreen);
-  };
+  }, [formattedDate, diary, key, aesKey])
+  // const handleToggle = () => {
+  //   setIsFullScreen(!isFullScreen);
+  // };
 
   const handleInput = (e) => {
     setText(e.target.value);
@@ -113,10 +111,12 @@ const MyEditor = ({diary,date, aesKey}) => {
         } else {
           setMessage('Failed to post diary entry');
         }
+        
       } catch (error) {
         setMessage('Error posting diary');
       } finally {
         setLoading(false);
+        console.log(message);
       }
     }
     else{

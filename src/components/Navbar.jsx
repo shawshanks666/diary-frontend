@@ -41,22 +41,9 @@ const Navbar = () => {
         {/* --- RIGHT SIDE ICONS + BURGER --- */}
         <div className="flex items-center gap-4 relative">
 
-          {/* Calendar */}
-          {/* <FontAwesomeIcon
-            icon={faCalendar}
-            className="text-xl cursor-pointer hover:text-green px-1"
-            onClick={handleToggle}
-          /> */}
-
-          {/* Profile */}
-          {/* <FontAwesomeIcon
-            icon={faUser}
-            className="text-xl cursor-pointer hover:text-green px-1"
-          /> */}
-
-          {/* Burger */}
           <div className="relative">
             <img
+              alt='dropdown menu'
               src={burgerIcon}
               className="text-xl cursor-pointer hover:text-green px-1"
               onClick={() => setMenuOpen(!menuOpen)}
@@ -68,27 +55,22 @@ const Navbar = () => {
                 ref={menuRef}
                 className="absolute right-0 mt-3 w-44 bg-[var(--jade-0)] border shadow-lg p-2 flex flex-col gap-1 z-100"
               >
-                {/* MENU ITEMS — replace with PNG icons whenever you want */}
 
                 <button className="flex items-center gap-3 px-3 py-2 rounded hover:bg-gray-100">
-                  {/* <img src={ProfilePNG} className="w-5 h-5" /> */}
                   <span>Profile</span>
                 </button>
 
                 <button className="flex items-center gap-3 px-3 py-2 rounded hover:bg-gray-100">
-                  {/* <img src={ThemesPNG} className="w-5 h-5" /> */}
                   <span>Themes</span>
                 </button>
 
                 <button className="flex items-center gap-3 px-3 py-2 rounded hover:bg-gray-100">
-                  {/* <img src={SettingsPNG} className="w-5 h-5" /> */}
                   <span>Settings</span>
                 </button>
 
                 <hr className="my-1" />
 
                 <button className="flex items-center gap-3 px-3 py-2 rounded hover:bg-red-50 text-red-500">
-                  {/* <img src={LogoutPNG} className="w-5 h-5" /> */}
                   <span>Logout</span>
                 </button>
                 <button 

@@ -30,7 +30,7 @@ export default function WordCount({date,diary}) {
       yearSum+=data.count
       
     })
-    const avg= monthSum/recentMonthData.length
+    // const avg= monthSum/recentMonthData.length
     return (
       <div className='word-count'>
         <div className='word-count-title'>You journaled</div>
@@ -38,7 +38,6 @@ export default function WordCount({date,diary}) {
         <div className='wordcount-data'><span>{yearSum}</span> words this year</div>
 
 
-        {/* <strong>Average Words Per Entry:</strong> {avg.toFixed(2)} */}
       </div>
     );
 }
