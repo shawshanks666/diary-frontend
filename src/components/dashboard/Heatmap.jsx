@@ -1,6 +1,6 @@
-import CalendarHeatmap from 'react-calendar-heatmap';
+// import CalendarHeatmap from 'react-calendar-heatmap';
 import { Heatmap } from '@mantine/charts';
-import { Tooltip } from 'react-tooltip';
+// import { Tooltip } from 'react-tooltip';
 import dayjs from 'dayjs';
 import 'react-calendar-heatmap/dist/styles.css';
 import 'react-tooltip/dist/react-tooltip.css';  

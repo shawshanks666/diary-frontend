@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faUser, faCalendar } from '@fortawesome/free-solid-svg-icons';
+// 
 import { useDispatch } from 'react-redux';
 import { toggle } from '../store/toggleSlice';
 import burgerIcon from "../assets/burger.png";

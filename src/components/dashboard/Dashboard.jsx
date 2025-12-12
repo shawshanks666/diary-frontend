@@ -6,7 +6,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { selectDiary, setDiary } from '../../store/diarySlice';
 import { selectKey, setKey } from "../../store/keySlice";
 import { useEffect, useState } from "react";
-import BasicDateCalendar from "../Calendar";
 import WordCount from "./WordCount";
 import Mood from "./Mood";
 const Dashboard = () => {

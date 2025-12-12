@@ -6,7 +6,7 @@ import Dashboard from './components/dashboard/Dashboard';
 import Home from './components/Home';
 import Landing from './components/Landing'
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 // Components for different pages
 function Log() {
   return <>

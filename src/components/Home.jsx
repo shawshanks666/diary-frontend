@@ -89,7 +89,7 @@ const Home = () => {
   console.log(recentMonthData);
   return (
       <div className="flex flex-row flex-wrap items-top diary-container">
-          <img src={book} class="book-image" />
+          <img src={book} class="book-image" alt='illustration of an open book'/>
 
         <div className='calendar-container'>
           <BasicDateCalendar data={temp} date={date} setDate={setDate} />

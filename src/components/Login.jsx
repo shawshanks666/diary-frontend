@@ -9,7 +9,7 @@ import classes from './FloatingLabelInput.module.css';
 const Login = () => {
 
   const navigate = useNavigate();
-  const key = sessionStorage.getItem('aesKey');
+  // const key = sessionStorage.getItem('aesKey');
   const [email, setEmail] = useState('');
   const [emailFocused, setEmailFocused] = useState(false);
   const [password, setPassword] = useState('');
@@ -150,6 +150,7 @@ const Login = () => {
                 <TextInput
                   label="Password"
                   placeholder="Password"
+                  type="password"
                   // required
                   value={password}
                   onChange={(event) => setPassword(event.currentTarget.value)}
