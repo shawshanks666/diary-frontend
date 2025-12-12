@@ -29,6 +29,8 @@ const Signin = () => {
     };
     console.log(payload);
     try {
+      console.log("ENV:", import.meta.env);
+
       const url =import.meta.env.VITE_BACKEND_API;
       // Send data to the backend using fetch or axios
       // const response = await fetch('http://localhost:3000/auth/signup', {
