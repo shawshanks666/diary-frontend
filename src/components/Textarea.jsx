@@ -97,7 +97,8 @@ const MyEditor = ({diary,date, aesKey}) => {
     setMessage('');
     if (isEditing){
       try {
-        const response = await fetch(`${import.meta.env.BACKEND_API}diary/${editingId}`, {
+        const url =import.meta.env.VITE_BACKEND_API;
+        const response = await fetch(`${url}diary/${editingId}`, {
 
           method: 'PATCH',
           headers: {
