@@ -97,7 +97,8 @@ const MyEditor = ({diary,date, aesKey}) => {
     setMessage('');
     if (isEditing){
       try {
-        const response = await fetch(`http://localhost:3000/diary/${editingId}`, {
+        const response = await fetch(`${import.meta.env.BACKEND_API}diary/${editingId}`, {
+
           method: 'PATCH',
           headers: {
             'Authorization': `Bearer ${token}`,
@@ -121,7 +122,8 @@ const MyEditor = ({diary,date, aesKey}) => {
     }
     else{
       try {
-        const response = await fetch('http://localhost:3000/diary', {
+        const response = await fetch(`${import.meta.env.BACKEND_API}/diary`, {
+        // const response = await fetch('http://localhost:3000/diary', {
           method: 'POST',
           headers: {
             'Authorization': `Bearer ${token}`,

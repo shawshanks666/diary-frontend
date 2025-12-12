@@ -16,7 +16,7 @@ export default async function sentimentAnalysis(text) {
 	};
   
 	const sanitizedText = text.replace(/\n/g, "\\n");
-	const apiKey = process.env.REACT_APP_API_KEY;
+	const apiKey = import.meta.env.REACT_APP_API_KEY;
   
 	// ------------------- EMOTION (fixed endpoint) -------------------
 	const response1 = await fetch(

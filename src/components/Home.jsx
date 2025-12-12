@@ -32,7 +32,8 @@ const Home = () => {
 
     async function getDiary() {
       try {
-        const response = await fetch('http://localhost:3000/diary', {
+        const response = await fetch(`${import.meta.env.BACKEND_API}/diary`, {
+        // const response = await fetch('http://localhost:3000/diary', {
           method: 'GET',
           headers: {
             'Authorization': `Bearer ${token}`,

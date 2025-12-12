@@ -30,7 +30,9 @@ const Signin = () => {
     console.log(payload);
     try {
       // Send data to the backend using fetch or axios
-      const response = await fetch('http://localhost:3000/auth/signup', {
+      // const response = await fetch('http://localhost:3000/auth/signup', {
+      const response = await fetch(`${import.meta.env.BACKEND_API}/auth/signup`, {
+
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
