@@ -29,7 +29,7 @@ const Signin = () => {
     };
     console.log(payload);
     try {
-      console.log("ENV:", import.meta.env);
+      console.log("ENV:", process.env);
 
       const url =process.env.REACT_APP_BACKEND_API;
       // Send data to the backend using fetch or axios
