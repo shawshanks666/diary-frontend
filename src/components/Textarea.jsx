@@ -97,7 +97,7 @@ const MyEditor = ({diary,date, aesKey}) => {
     setMessage('');
     if (isEditing){
       try {
-        const url =import.meta.env.VITE_BACKEND_API;
+        const url =process.env.REACT_APP_BACKEND_API;
         const response = await fetch(`${url}diary/${editingId}`, {
 
           method: 'PATCH',
@@ -123,7 +123,7 @@ const MyEditor = ({diary,date, aesKey}) => {
     }
     else{
       try {
-        const response = await fetch(`${import.meta.env.BACKEND_API}/diary`, {
+        const response = await fetch(`${url}/diary`, {
         // const response = await fetch('http://localhost:3000/diary', {
           method: 'POST',
           headers: {

@@ -31,7 +31,7 @@ const Signin = () => {
     try {
       console.log("ENV:", import.meta.env);
 
-      const url =import.meta.env.VITE_BACKEND_API;
+      const url =process.env.REACT_APP_BACKEND_API;
       // Send data to the backend using fetch or axios
       // const response = await fetch('http://localhost:3000/auth/signup', {
       const response = await fetch(`${url}/auth/signup`, {

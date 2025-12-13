@@ -32,7 +32,7 @@ const Home = () => {
 
     async function getDiary() {
       try {
-        const url =import.meta.env.VITE_BACKEND_API;
+        const url =process.env.REACT_APP_BACKEND_API;
         const response = await fetch(`${url}/diary`, {
         // const response = await fetch('http://localhost:3000/diary', {
           method: 'GET',
