@@ -76,6 +76,7 @@ const MyEditor = ({diary,date, aesKey}) => {
 }
 
   const handleSubmit = async () => {
+    const url =process.env.REACT_APP_BACKEND_API;
 
     const {ciphertext, iv} = await encryptData(key, text);
     console.log("c",ciphertext,"iv", iv);
@@ -97,7 +98,6 @@ const MyEditor = ({diary,date, aesKey}) => {
     setMessage('');
     if (isEditing){
       try {
-        const url =process.env.REACT_APP_BACKEND_API;
         const response = await fetch(`${url}diary/${editingId}`, {
 
           method: 'PATCH',
